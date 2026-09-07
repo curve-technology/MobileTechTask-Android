@@ -1,23 +1,24 @@
 package com.curve.techtask.movies.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.curve.techtask.data.repository.Movie
-import com.curve.techtask.movies.R
+import com.curve.techtask.movies.databinding.ActivityMainBinding
 import com.curve.techtask.movies.ui.adapter.MovieListAdapter
-import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class MainActivity : AppCompatActivity(R.layout.activity_main) {
+class MainActivity : AppCompatActivity() {
 
     private val viewModel: MoviesViewModel by viewModel()
     private val adapter by lazy { MovieListAdapter() }
+    private lateinit var binding: ActivityMainBinding
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         setupUI()
         startObervers()
@@ -25,10 +26,10 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
     }
 
     private fun startObervers() {
-        viewModel.moviesSource.observeForever {
+        viewModel.moviesSource.observe(this) {
             updateMovies(it)
         }
-        viewModel.errors.observeForever {
+        viewModel.errors.observe(this) {
             viewModel.showError(this, it)
         }
     }
@@ -39,8 +40,8 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
     private fun setupUI() {
         title = "Popular Movies"
-        movies_list.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        movies_list.adapter = adapter
+        binding.moviesList.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        binding.moviesList.adapter = adapter
     }
 
 }
