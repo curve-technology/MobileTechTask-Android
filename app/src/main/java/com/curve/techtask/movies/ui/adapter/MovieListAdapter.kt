@@ -7,11 +7,10 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import coil3.load
 import com.curve.techtask.data.repository.Movie
 import com.curve.techtask.movies.R
 import com.google.android.material.textview.MaterialTextView
-import com.nostra13.universalimageloader.core.ImageLoader
-import com.squareup.picasso.Picasso
 
 class MovieListAdapter : ListAdapter<Movie, MovieViewHolder>(MovieDiffCallback()) {
 
@@ -44,7 +43,7 @@ class MovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     fun bind(item: Movie) {
         titleView.text = item.title
-        ImageLoader.getInstance().displayImage("https://image.tmdb.org/t/p/original" + item.posterPath, coverView)
+        coverView.load("https://image.tmdb.org/t/p/original" + item.posterPath)
     }
 
 }

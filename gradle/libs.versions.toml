@@ -1,0 +1,53 @@
+[versions]
+agp = "9.3.0"
+kotlin = "2.4.10"
+
+coreKtx = "1.19.0"
+appcompat = "1.8.0"
+material = "1.14.0"
+constraintlayout = "2.2.2"
+recyclerview = "1.4.0"
+lifecycle = "2.11.0"
+
+koin = "4.2.2"
+retrofit = "3.0.0"
+moshi = "1.15.2"
+okhttp = "5.5.0"
+coil = "3.6.2"
+
+junit = "4.13.2"
+androidxJunit = "1.3.0"
+espresso = "3.7.0"
+
+[libraries]
+kotlin-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
+
+androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "coreKtx" }
+androidx-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "appcompat" }
+androidx-constraintlayout = { module = "androidx.constraintlayout:constraintlayout", version.ref = "constraintlayout" }
+androidx-recyclerview = { module = "androidx.recyclerview:recyclerview", version.ref = "recyclerview" }
+androidx-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycle" }
+androidx-lifecycle-runtime-ktx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "lifecycle" }
+androidx-lifecycle-livedata-ktx = { module = "androidx.lifecycle:lifecycle-livedata-ktx", version.ref = "lifecycle" }
+material = { module = "com.google.android.material:material", version.ref = "material" }
+
+koin-bom = { module = "io.insert-koin:koin-bom", version.ref = "koin" }
+koin-android = { module = "io.insert-koin:koin-android" }
+koin-core = { module = "io.insert-koin:koin-core" }
+
+retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
+retrofit-converter-moshi = { module = "com.squareup.retrofit2:converter-moshi", version.ref = "retrofit" }
+moshi-kotlin = { module = "com.squareup.moshi:moshi-kotlin", version.ref = "moshi" }
+okhttp-bom = { module = "com.squareup.okhttp3:okhttp-bom", version.ref = "okhttp" }
+okhttp = { module = "com.squareup.okhttp3:okhttp" }
+
+coil = { module = "io.coil-kt.coil3:coil", version.ref = "coil" }
+coil-network-okhttp = { module = "io.coil-kt.coil3:coil-network-okhttp", version.ref = "coil" }
+
+junit = { module = "junit:junit", version.ref = "junit" }
+androidx-test-junit = { module = "androidx.test.ext:junit", version.ref = "androidxJunit" }
+androidx-test-espresso-core = { module = "androidx.test.espresso:espresso-core", version.ref = "espresso" }
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "agp" }
+android-library = { id = "com.android.library", version.ref = "agp" }

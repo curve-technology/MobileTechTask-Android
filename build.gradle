@@ -1,26 +1,17 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
-    ext.kotlin_version = "1.4.31"
     repositories {
         google()
-        jcenter()
+        mavenCentral()
     }
     dependencies {
-        classpath "com.android.tools.build:gradle:4.1.3"
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-
-        // NOTE: Do not place your application dependencies here; they belong
-        // in the individual module build.gradle files
+        // AGP 9 compiles Kotlin itself (built-in Kotlin) and pins KGP to 2.2.10.
+        // This classpath entry is the supported way to raise that to a newer Kotlin.
+        classpath libs.kotlin.gradle.plugin
     }
 }
 
-allprojects {
-    repositories {
-        google()
-        jcenter()
-    }
-}
-
-task clean(type: Delete) {
-    delete rootProject.buildDir
+plugins {
+    alias(libs.plugins.android.application) apply false
+    alias(libs.plugins.android.library) apply false
 }
